@@ -16,13 +16,17 @@ public class CalculService {
 	 * @param expression
 	 * @return int
 	 */
-	public int additioner(String expression) {
+	public int additionner(String expression) {
 		LOG.debug("Evaluation de l'expression "+expression);
+		int resultat;
 		try{
-			return Stream.of(expression.trim().split("\\+")).mapToInt(s -> Integer.parseInt(s)).sum(); 
+		resultat = Stream.of(expression.trim().split("\\+")).mapToInt(s -> Integer.parseInt(s)).sum();
+		
+			
 
 		}catch (Exception e) {
-			throw new CalculException();
+			throw new CalculException(expression);
 		}
+		return  resultat;
 	}
 }
